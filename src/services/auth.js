@@ -35,7 +35,7 @@ export class AuthService {
     try {
       return await this.account.createEmailSession(email, password);
     } catch (error) {
-      throw error;
+     console.log(`auth service login erros !! ${error}`);
     }
   }
   async getCurrentUser() {
@@ -43,7 +43,7 @@ export class AuthService {
       const res = await this.account.get();
       res ? res : null;
     } catch (error) {
-      throw error;
+      console.log(`auth service getCurrentUser erros !! ${error}`);
     }
   }
   async logOut() {
