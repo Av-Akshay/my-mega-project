@@ -35,7 +35,7 @@ export class AuthService {
     try {
       return await this.account.createEmailSession(email, password);
     } catch (error) {
-     console.log(`auth service login erros !! ${error}`);
+     console.log(`auth service login erros !! ${error.message}`);
     }
   }
   async getCurrentUser() {

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import authService from "../services/auth";
 import { useForm } from "react-hook-form";
 import { Input, Button, Logo } from "./index";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { login } from "../store/authSlice";
 
@@ -14,14 +14,18 @@ const SignUp = (data) => {
 
   const create = async (data) => {
     setError("");
+    console.log(data);
     try {
       const userData = await authService.createAccount(data);
+      console.log(userData);
       if (userData) {
         const userData = await authService.getCurrentUser();
+        console.log(userData);
         if (userData) dispatch(login(userData));
         navigate("/");
       }
     } catch (error) {
+      console.log( error);
       setError(error.message);
     }
   };
@@ -48,13 +52,13 @@ const SignUp = (data) => {
             Sign In
           </Link>
         </p>
-        {error && <p className="text-red-600 mt-8 text-center">{error}</p>}
+        {error && <p className="text-red-600 mt-8 text-center">{error.message}</p>}
         <form onSubmit={handleSubmit(create)}>
           <div className="space-y-5">
             <Input
               label="Full Name: "
               placeholder="Enter you full name"
-              {...register("namw", {
+              {...register("name", {
                 required: true,
               })}
             />

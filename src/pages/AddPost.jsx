@@ -1,5 +1,5 @@
 import React from 'react';
-import { Postcard , Container,
+import { Container,
 PostForm } from '../components';
 
 const AddPost = () => {

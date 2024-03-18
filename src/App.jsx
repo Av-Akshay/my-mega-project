@@ -28,16 +28,16 @@ function App() {
   }, []);
 
   return !loading ? (
-    <Router>
+    <>
     <div className="min-h-screen flex flex-wrap justify-between bg-gray-400 ">
       <div className="w-full block">
         <Header />
-        <main>Todo {/* <Outlet/> */}</main>
+        <Outlet/> 
         <Footer />
       </div>
     </div>
 
-    </Router>
+    </>
   ) : null;
 }
 
